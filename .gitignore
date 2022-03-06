@@ -1,0 +1,4 @@
+# ignore dataset
+datasets/
+mnist_784/
+MNIST_DATASET/
