@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 import argparse
 from src.model import AutoEncoder
 from src.train import train
-from src.utils import *
+from src.utils import get_mnist_from_sklearn, plot_results
 
 parser = argparse.ArgumentParser(description="training auto encoder for mnist")
 parser.add_argument("--batch_size", type = int, default = 128)

@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 import argparse
 from src.model import AutoEncoder
 from src.train import train
-from src.utils import *
+from src.utils import generate_dataloader
 
 parser = argparse.ArgumentParser(description="training auto encoder for mnist")
 parser.add_argument("--batch_size", type = int, default = 128)
@@ -55,26 +55,6 @@ loss_fn = torch.nn.MSELoss(reduction = 'sum')
 scheduler = torch.optim.lr_scheduler.StepLR(optimizer, step_size = step_size, gamma = gamma, last_epoch = -1)
 
 if __name__ == "__main__":
-
-    # wandb initialized
-    # wandb.init(project="Auto-Encoder", entity="zinzinbin")
-
-    # wandb experiment name edit
-    # wandb.run.name = args["wandb_save_name"]
-
-    # save run setting
-    # wandb.run.save()
-
-    # wandb setting
-    # wandb.config = {
-    #     "learning_rate": lr,
-    #     "batch_size": batch_size,
-    #     "gamma":gamma,
-    #     "beta_1":beta_1,
-    #     "beta_2":beta_2,
-    #     "latent_dims":latent_dims,
-    #     "optimizer":"AdamW"
-    # }
 
     train_dataloader, valid_dataloader, test_dataloader = generate_dataloader(batch_size)
     train_loss, valid_loss = train(
